@@ -41,6 +41,7 @@ namespace CourseLibrary.API
                 //    new XmlDataContractSerializerOutputFormatter()); // Add xml to OutputFormatters list to enable it
             }).AddXmlDataContractSerializerFormatters();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 

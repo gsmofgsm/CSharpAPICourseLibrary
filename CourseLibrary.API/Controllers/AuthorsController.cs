@@ -1,4 +1,5 @@
-﻿using CourseLibrary.API.Helpers;
+﻿using AutoMapper;
+using CourseLibrary.API.Helpers;
 using CourseLibrary.API.Models;
 using CourseLibrary.API.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -16,34 +17,40 @@ namespace CourseLibrary.API.Controllers
     {
         private readonly ICourseLibraryRepository _courseLibraryRepository;
 
-        public AuthorsController(ICourseLibraryRepository courseLibraryRepository)
+        public IMapper _mapper { get; }
+
+        public AuthorsController(ICourseLibraryRepository courseLibraryRepository,
+            IMapper mapper)
         {
             _courseLibraryRepository = courseLibraryRepository ??
                 throw new ArgumentNullException(nameof(courseLibraryRepository));
+            _mapper = mapper ??
+                throw new ArgumentNullException(nameof(mapper));
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<AuthorDto>> GetAuthors()
         {
             var authorsFromRepo = _courseLibraryRepository.GetAuthors();
-            var authors = new List<AuthorDto>();
+            //var authors = new List<AuthorDto>();
 
-            foreach (var author in authorsFromRepo)
-            {
-                authors.Add(new AuthorDto()
-                {
-                    Id = author.Id,
-                    Name = $"{author.FirstName} {author.LastName}",
-                    MainCategory = author.MainCategory,
-                    Age = author.DateOfBirth.GetCurrentAge()
-                }); ;
-            }
+            //foreach (var author in authorsFromRepo)
+            //{
+            //    authors.Add(new AuthorDto()
+            //    {
+            //        Id = author.Id,
+            //        Name = $"{author.FirstName} {author.LastName}",
+            //        MainCategory = author.MainCategory,
+            //        Age = author.DateOfBirth.GetCurrentAge()
+            //    }); ;
+            //}
 
-            return Ok(authors);
+            //return Ok(authors);
+            return Ok(_mapper.Map<IEnumerable<AuthorDto>>(authorsFromRepo));
         }
 
         [HttpGet("{authorId:guid}")]
-        public IActionResult GetAuthor(Guid authorId)
+        public ActionResult<AuthorDto> GetAuthor(Guid authorId)
         {
             //if (!_courseLibraryRepository.AuthorExists(authorId))
             //{
@@ -57,7 +64,7 @@ namespace CourseLibrary.API.Controllers
                 return NotFound();
             }
 
-            return Ok(authorFromRepo);
+            return Ok(_mapper.Map<AuthorDto>(authorFromRepo));
         }
     }
 }
