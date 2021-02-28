@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -32,10 +33,13 @@ namespace CourseLibrary.API
 
             services.AddControllers(setupAction =>
             {
-                setupAction.ReturnHttpNotAcceptable = true;  
+                setupAction.ReturnHttpNotAcceptable = true;
                 // default is false, and default (json) will always be returned
                 // when set to true, 406 not acceptable gets returned if requested format not supported
-            });
+
+                //setupAction.OutputFormatters.Add(
+                //    new XmlDataContractSerializerOutputFormatter()); // Add xml to OutputFormatters list to enable it
+            }).AddXmlDataContractSerializerFormatters();
 
 
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
