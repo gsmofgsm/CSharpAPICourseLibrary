@@ -30,7 +30,13 @@ namespace CourseLibrary.API
             // ConfigureServices is used to add services to the built-in dependency injection container
             // and to configure those services
 
-            services.AddControllers();
+            services.AddControllers(setupAction =>
+            {
+                setupAction.ReturnHttpNotAcceptable = true;  
+                // default is false, and default (json) will always be returned
+                // when set to true, 406 not acceptable gets returned if requested format not supported
+            });
+
 
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 

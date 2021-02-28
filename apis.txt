@@ -8,3 +8,9 @@ GET http://localhost:51044/api/authors/1
 GET http://localhost:51044/api/authors/d94a64c2-2e8f-4162-9976-0ffe03d30767
 # guid that does not exist
 GET http://localhost:51044/api/authors/d94a64c2-2e8f-4162-9976-0ffe03d30766
+
+GET http://localhost:51044/api/authors/d94a64c2-2e8f-4162-9976-0ffe03d30767
+Accept: application/json
+
+GET http://localhost:51044/api/authors/d94a64c2-2e8f-4162-9976-0ffe03d30767
+Accept: application/xml
