@@ -6,9 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="DbContexts\" />
-    <Folder Include="Entities\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
