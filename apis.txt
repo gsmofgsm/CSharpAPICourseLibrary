@@ -1,0 +1,7 @@
+GET http://localhost:51044/api/authors
+
+# because of the :guid contrain in [HttpGet("{authorId:guid}")]
+# if the authorId can't be converted in tot guid
+# it won't be passed
+GET http://localhost:51044/api/authors/1
+GET http://localhost:51044/api/authors/d94a64c2-2e8f-4162-9976-0ffe03d30767
