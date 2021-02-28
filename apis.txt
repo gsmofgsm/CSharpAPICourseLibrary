@@ -43,3 +43,15 @@ Accept: application/json
     "dateOfBirth": "1968-03-04T00:00:00",
     "mainCategory": "Rum"
 }
+
+
+POST http://localhost:51044/api/authors/d94a64c2-2e8f-4162-9976-0ffe03d30767
+Content-Type: application/json
+Accept: application/json
+
+{
+    "firstName": "Jane",
+    "lastName": "Skewers",
+    "dateOfBirth": "1968-03-04T00:00:00",
+    "mainCategory": "Rum"
+}
