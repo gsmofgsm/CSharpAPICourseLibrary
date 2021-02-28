@@ -31,6 +31,7 @@ namespace CourseLibrary.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<AuthorDto>> GetAuthors()
         {
+            //throw new Exception("Test exception");
             var authorsFromRepo = _courseLibraryRepository.GetAuthors();
             //var authors = new List<AuthorDto>();
 
