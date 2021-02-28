@@ -30,4 +30,16 @@ GET http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/cour
 
 HEAD http://localhost:51044/api/authors
 
-GET http://localhost:51044/api/authors
+GET http://localhost:51044/api/authors?mainCategory=Rum&searchQuery=a
+
+
+POST http://localhost:51044/api/authors
+Content-Type: application/json
+Accept: application/json
+
+{
+    "firstName": "Jane",
+    "lastName": "Skewers",
+    "dateOfBirth": "1968-03-04T00:00:00",
+    "mainCategory": "Rum"
+}
