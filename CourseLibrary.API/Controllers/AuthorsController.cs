@@ -30,12 +30,18 @@ namespace CourseLibrary.API.Controllers
         [HttpGet("{authorId:guid}")]
         public IActionResult GetAuthor(Guid authorId)
         {
-            if (!_courseLibraryRepository.AuthorExists(authorId))
-            {
-                return NotFound();
-            } // this will be in a seperate request, though. To be changed
+            //if (!_courseLibraryRepository.AuthorExists(authorId))
+            //{
+            //    return NotFound();
+            //} // this will be in a seperate request, though. To be changed
 
             var authorFromRepo = _courseLibraryRepository.GetAuthor(authorId);
+
+            if (authorFromRepo == null)
+            {
+                return NotFound();
+            }
+
             return Ok(authorFromRepo);
         }
     }
