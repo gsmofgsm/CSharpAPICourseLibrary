@@ -17,3 +17,8 @@ Accept: application/xml
 
 GET http://localhost:51044/api/authors/d94a64c2-2e8f-4162-9976-0ffe03d30767
 Accept: application/zip
+
+
+#### Courses
+
+GET http://localhost:51044/api/authors/d94a64c2-2e8f-4162-9976-0ffe03d30767/courses
