@@ -29,6 +29,7 @@ namespace CourseLibrary.API.Controllers
         }
 
         [HttpGet]
+        [HttpHead]
         public ActionResult<IEnumerable<AuthorDto>> GetAuthors()
         {
             //throw new Exception("Test exception");
