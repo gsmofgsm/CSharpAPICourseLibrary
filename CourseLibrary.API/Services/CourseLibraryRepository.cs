@@ -160,6 +160,15 @@ namespace CourseLibrary.API.Services
         public void UpdateAuthor(Author author)
         {
             // no code
+
+            // in this implementation, ie EFcore
+            // changes will be tracked by DbContext
+            // and updated when SaveChanges() get exected
+            // so Update method don't actally need to do anything
+
+            // this method here is purely for the contract
+            // for the case in other implementations
+            // the update method do need to do something
         }
 
         public void DeleteAuthor(Author author)
