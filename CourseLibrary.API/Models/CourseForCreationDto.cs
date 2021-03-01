@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CourseLibrary.API.Models
 {
-    public class CourseForCreationDto
+    public class CourseForCreationDto : IValidatableObject
     {
         [Required]
         [MaxLength(100)]
@@ -15,5 +15,15 @@ namespace CourseLibrary.API.Models
 
         [MaxLength(1500)]
         public string Description { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (Title == Description)
+            {
+                yield return new ValidationResult(
+                    "The provided desription should be different form the title",
+                    new[] { "CourseForCreationDto" });
+            }
+        }
     }
 }

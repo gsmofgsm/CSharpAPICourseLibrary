@@ -111,3 +111,12 @@ Accept: application/json
     "title": null, 
     "description": null
 }
+
+POST http://localhost:51044/api/authors/d94a64c2-2e8f-4162-9976-0ffe03d30767/courses
+Content-Type: application/json
+Accept: application/json
+
+{
+    "title": "new", 
+    "description": "new"
+}
