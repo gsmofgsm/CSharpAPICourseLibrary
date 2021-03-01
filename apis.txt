@@ -71,3 +71,24 @@ Accept: application/json
         }
     ]
 }
+
+POST http://localhost:51044/api/authorcollections
+Content-Type: application/json
+Accept: application/json
+
+[
+{
+    "firstName": "Jane1",
+    "lastName": "Skewers1",
+    "dateOfBirth": "1968-03-04T00:00:00",
+    "mainCategory": "Rum"
+},
+{
+    "firstName": "Jane2",
+    "lastName": "Skewers2",
+    "dateOfBirth": "1968-03-04T00:00:00",
+    "mainCategory": "Rum"
+}
+]
+
+GET http://localhost:51044/api/authors?searchQuery=Jane
