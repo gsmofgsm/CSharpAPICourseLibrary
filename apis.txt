@@ -120,3 +120,44 @@ Accept: application/json
     "title": "new", 
     "description": "new"
 }
+
+GET http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b
+Accept: application/json
+
+PUT http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c66
+Content-Type: application/json
+Accept: application/json
+
+{
+    "title": "updated",
+    "description": "new"
+}
+
+
+PATCH http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b
+Content-Type: application/json-patch+json
+Accept: application/json
+
+[
+    {
+        "op": "replace",
+        "path": "/title",
+        "value": "updated title"
+    },
+    {
+        "op": "replace",
+        "path": "/description",
+        "value": "updated description"
+    }
+]
+
+PATCH http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b
+Content-Type: application/json-patch+json
+Accept: application/json
+
+[
+    {
+        "op": "remove",
+        "path": "/description"
+    }
+]

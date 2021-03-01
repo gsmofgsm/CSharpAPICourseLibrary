@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Newtonsoft.Json.Serialization;
 
 namespace CourseLibrary.API
 {
@@ -41,7 +42,12 @@ namespace CourseLibrary.API
 
                 //setupAction.OutputFormatters.Add(
                 //    new XmlDataContractSerializerOutputFormatter()); // Add xml to OutputFormatters list to enable it
-            }).AddXmlDataContractSerializerFormatters()
+            }).AddNewtonsoftJson(setupAction =>
+                {
+                    setupAction.SerializerSettings.ContractResolver =
+                        new CamelCasePropertyNamesContractResolver();
+                })
+                .AddXmlDataContractSerializerFormatters() // when there is no default accept header, putting this before newton will make the default xml
                 .ConfigureApiBehaviorOptions(setupAction =>
                 {
                     setupAction.InvalidModelStateResponseFactory = context =>
