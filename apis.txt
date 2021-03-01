@@ -92,3 +92,22 @@ Accept: application/json
 ]
 
 GET http://localhost:51044/api/authors?searchQuery=Jane
+
+GET http://localhost:51044/api/authorcollections/(bbe10405-74d8-478b-88c8-37693362279f,223c30de-d263-4f91-a203-3dbd9d153bc4)
+
+
+OPTIONS http://localhost:51044/api/authors
+
+POST http://localhost:51044/api/authorcollections/bbe10405-74d8-478b-88c8-37693362279f
+
+
+#### validation
+
+POST http://localhost:51044/api/authors/d94a64c2-2e8f-4162-9976-0ffe03d30767/courses
+Content-Type: application/json
+Accept: application/json
+
+{
+    "title": null, 
+    "description": null
+}
